@@ -2,13 +2,13 @@ from flask import render_template, flash, redirect, session, url_for, request,  
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
 from forms import LoginForm
-# from models import User, ROLE_USER, ROLE_ADMIN
+from models import User, ROLE_USER, ROLE_ADMIN
 
-"""
+
 @lm.user_loader
 def load_user(id):
 	return User.query.get(int(id))
-"""
+
 
 
 @app.route('/')
@@ -62,7 +62,7 @@ def login():
 @app.route('/logout')
 def logout():
 	logout_user()
-	return redirect(user_for('index'))
+	return redirect(url_for('index'))
 
 
 @app.before_request
@@ -70,7 +70,7 @@ def before_request():
 	g.user = current_user
 
 
-"""
+
 @oid.after_login
 def after_login(resp):
 
@@ -101,7 +101,30 @@ def after_login(resp):
 
 	return redirect(request.args.get('next') or url_for('index'))
 
-"""
+
+@app.route('/user/<nickname>')
+@login_required
+def user(nickname):
+
+	user = User.query.filter_by(nickname = nickname).first()
+
+	if user == None:
+		flash('User ' + nickname + ' not found.')
+		return redirect(url_for('index'))
+
+
+	posts = [
+	{ 'author' : user, 'body' : 'Test post #1' },
+	{ 'author' : user, 'body' : 'Test post #2' }
+	]
+
+	return render_template('user.html',
+		user  = user,
+		posts = posts)
+
+
+
+
 
 
 
