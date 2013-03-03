@@ -33,3 +33,7 @@ MAIL_PASSWORD = None
 #------------------------
 ADMINS = ['emiliano@medlista.com']
 
+
+#------------------------
+#------------------------
+POST_PER_PAGE = 3

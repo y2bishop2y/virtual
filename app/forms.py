@@ -33,3 +33,7 @@ class EditForm(Form):
 			return False
 
 		return True
+
+
+class PostForm(Form):
+	post = TextField('post', validators = [Required()])
