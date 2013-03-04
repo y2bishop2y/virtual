@@ -25,8 +25,10 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 #------------------------
 MAIL_SERVER = 'localhost'
 MAIL_PORT   = 25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_USE_TLS = False
+MAIL_USE_SSL = False
+MAIL_USERNAME = 'test'
+MAIL_PASSWORD = 'test-pass'
 
 #------------------------
 # Administrator List
