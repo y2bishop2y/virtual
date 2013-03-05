@@ -57,6 +57,10 @@ class TestCase(unittest.TestCase):
 
 
 
+
+
+
+
 	def test_follow(self):
 		u1 = User(nickname = 'john',  email = 'john@example.com')
 		u2 = User(nickname = 'susan', email = 'susan@example.com')
