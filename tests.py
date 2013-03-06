@@ -9,7 +9,7 @@ from app import app, db
 from datetime import datetime, timedelta
 from app.models import User, Post
 
-class TestCase(unittest.TestCase):
+class TestAvatar(unittest.TestCase):
 
 
 	def setUp(self):
@@ -36,6 +36,24 @@ class TestCase(unittest.TestCase):
 
 		assert avatar[0:len(expected)] == expected
 
+
+class TestNickName(unittest.TestCase):
+
+	def setUp(self):
+
+		app.config['TESTING'] = True
+		app.config['CSRF_ENABLED'] = False
+		app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+
+		self.app = app.test_client()
+		db.create_all()
+
+
+	def tearDown(self):
+		db.session.remove()
+		db.drop_all()
+
+
 	def test_make_unique_nickname(self):
 		u = User(nickname = 'john', email = 'john@example.com')
 
@@ -56,8 +74,21 @@ class TestCase(unittest.TestCase):
 		assert nickname2 != nickname
 
 
+class TestFollow(unittest.TestCase):
+
+	def setUp(self):
+
+		app.config['TESTING'] = True
+		app.config['CSRF_ENABLED'] = False
+		app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+
+		self.app = app.test_client()
+		db.create_all()
 
 
+	def tearDown(self):
+		db.session.remove()
+		db.drop_all()
 
 
 
@@ -143,6 +174,7 @@ class TestCase(unittest.TestCase):
 		f3 = u3.followed_posts().all()
 		f4 = u4.followed_posts().all()
 
+		print "THIS IS THE LENGTH: %d" % len(f1)
 		assert len(f1) == 3
 		assert len(f2) == 2
 		assert len(f3) == 2
@@ -157,16 +189,19 @@ class TestCase(unittest.TestCase):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+"""
 if __name__ == '__main__':
-	unittest.main()
+
+	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestAvatar)
+	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestNickName)
+
+	suite = unittest.TestSuite([suite1, suite2])
+
+	unittest.TextTestRunner(verbosity = 2).run(suite)
+	
+	# unittest.main()
+"""
+
+
+
+
