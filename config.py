@@ -28,7 +28,7 @@ MAIL_PORT   = 25
 MAIL_USE_TLS = False
 MAIL_USE_SSL = False
 MAIL_USERNAME = 'test'
-MAIL_PASSWORD = 'test-pass'
+MAIL_PASSWORD = 'test-passw'
 
 #------------------------
 # Administrator List
@@ -46,4 +46,16 @@ POST_PER_PAGE = 3
 #------------------------
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
+
+
+#------------------------
+#------------------------
+LANGUAGES = {
+	'en' : 'English'
+	'es' : 'Espanol'
+
+}
+
+
+
 
