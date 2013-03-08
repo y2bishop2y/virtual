@@ -27,7 +27,7 @@ class EditForm(Form):
 			return True
 
 		if self.nickname.data != User.make_valid_nickname(self.nickname.data):
-			self.nickname.errors.append(gettext('This nickname has invalid characters. Please user letters, numbers, dots asnd underscores only.'))
+			self.nickname.errors.append(gettext('This nickname has invalid characters. Please user letters, numbers, dots and underscores only.'))
 			return False
 
 		user = User.query.filter_by(nickname = self.nickname.data).first()
