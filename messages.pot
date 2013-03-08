@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-07 00:38-0800\n"
+"POT-Creation-Date: 2013-03-07 23:54-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
+
+#: app/__init__.py:22
+msgid "Please log in to access this page."
+msgstr ""
 
 #: app/forms.py:30
 msgid ""
@@ -80,6 +84,22 @@ msgstr ""
 #: app/views.py:229
 #, python-format
 msgid "You have stopped following %(nickname)s ."
+msgstr ""
+
+#: app/templates/base.html:32
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:34
+msgid "Your Profile"
+msgstr ""
+
+#: app/templates/base.html:35
+msgid "Logout"
+msgstr ""
+
+#: app/templates/base.html:45
+msgid "Search"
 msgstr ""
 
 #: app/templates/edit.html:6

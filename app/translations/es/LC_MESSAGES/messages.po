@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-07 00:38-0800\n"
-"PO-Revision-Date: 2013-03-07 23:10-0800\n"
+"POT-Creation-Date: 2013-03-07 23:54-0800\n"
+"PO-Revision-Date: 2013-03-07 23:56-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 "X-Generator: Poedit 1.5.5\n"
+
+#: app/__init__.py:22
+msgid "Please log in to access this page."
+msgstr "Por favor regístrate para acceder a esta página."
 
 #: app/forms.py:30
 msgid ""
@@ -84,6 +88,23 @@ msgstr "No se pudo dejar de seguir a %(nickname)s."
 #, python-format
 msgid "You have stopped following %(nickname)s ."
 msgstr "Ya no sigues más a %(nickname)s."
+
+#: app/templates/base.html:32
+msgid "Home"
+msgstr "Inicio"
+
+#: app/templates/base.html:34
+#, fuzzy
+msgid "Your Profile"
+msgstr "Editar Tu Perfil"
+
+#: app/templates/base.html:35
+msgid "Logout"
+msgstr "Desconectarse"
+
+#: app/templates/base.html:45
+msgid "Search"
+msgstr "Buscar"
 
 #: app/templates/edit.html:6
 msgid "Edit your Profile"

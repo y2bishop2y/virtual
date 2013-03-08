@@ -251,6 +251,7 @@ def search_results(query):
 
 @babel.localeselector
 def get_locale():
-	return request.accept_languages.best_match(LANGUAGES.keys())
+	# return request.accept_languages.best_match(LANGUAGES.keys())
+	return 'es'
 
 
