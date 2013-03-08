@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form, TextField, BooleanField, TextAreaField
 from flask.ext.wtf import Required, Length
-from flask.ext.Bable import gettext
+from flask.ext.babel import gettext
 
 
 class LoginForm(Form):

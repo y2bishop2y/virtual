@@ -249,7 +249,7 @@ def search_results(query):
 		results = results)
 
 
-@babel.localselector
+@babel.localeselector
 def get_locale():
 	return request.accept_languages.best_match(LANGUAGES.keys())
 

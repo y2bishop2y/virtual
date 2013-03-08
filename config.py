@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -51,9 +52,8 @@ MAX_SEARCH_RESULTS = 50
 #------------------------
 #------------------------
 LANGUAGES = {
-	'en' : 'English'
-	'es' : 'Espanol'
-
+	'en' : 'English',
+	'es': 'EspaÃ±ol'
 }
 
 
