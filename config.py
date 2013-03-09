@@ -56,6 +56,13 @@ LANGUAGES = {
 	'es': 'EspaÃ±ol'
 }
 
+#------------------------
+# Translation
+#------------------------
+MS_TRANSLATOR_CLIENT_ID = '00a0794c-d4db-458d-8f5c-50e181829433'
+MS_TRANSLATOR_CLIENT_SECRET= 'aKweH+XH72XvFcPPk+TEG5qbXi1XeKsBx8o2dVlE3ps='
+
+
 
 
 
