@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, session, url_for, request,  g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.babel import gettext
+from flask import jsonify
 from guess_language import guessLanguage 
 
 from app import app, db, lm, oid, babel
@@ -9,6 +10,8 @@ from emails import follower_notification
 from datetime import datetime
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from config import POST_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
+from translate import microsoft_translate
+
 
 @lm.user_loader
 def load_user(id):
@@ -274,5 +277,5 @@ def translate():
 			request.form['destLang']
 			)
 		})
-		})
+		
 

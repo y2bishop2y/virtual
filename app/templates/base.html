@@ -17,6 +17,28 @@
 		{% endif %}
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+		<script>
+		function translate(sourceLang, destLang, sourceId, destId, loadingId) {
+
+			$(destId).hide();
+			$(loadingId).show();
+
+			$.post('/translate', {
+				text: $(sourceId).text(),
+				sourceLang: sourceLang,
+				destLang:   destLang
+			}).done(function(translate) {
+				$(destId).text(translate['text']);
+				$(loadingId).hide();
+				$(destId).show();
+			}).fail(function() {
+				$(destId).text("{{_('Error: Could not contact server.')}}");
+				$(loadingId).hide();
+				$(destId).show();
+			});
+		}
+		</script>
+
 	</head>
 	<body>
 		<div class="container">

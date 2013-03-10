@@ -17,7 +17,7 @@
 			</p>
 			{% endautoescape %}
 			<p>
-				<strong>{{post.body}}</strong>
+				<strong><span id="post{{post.id}}">{{post.body}}</span></strong>
 			</p>
 
 			{% if post.language != None and post.language != '' and post.language != g.locale %}
