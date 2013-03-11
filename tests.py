@@ -1,4 +1,5 @@
 #!flask/bin/python
+# -*- coding: utf8 -*-
 
 import os
 import unittest
@@ -8,6 +9,7 @@ from config import basedir
 from app import app, db
 from datetime import datetime, timedelta
 from app.models import User, Post
+from app.translate import microsoft_translate
 
 class TestAvatar(unittest.TestCase):
 
@@ -188,19 +190,37 @@ class TestFollow(unittest.TestCase):
 
 
 
+class TestTranslate(unittest.TestCase):
 
-"""
+	def setUp(self):
+		pass
+		
+
+
+	def tearDown(self):
+		pass
+
+
+	def test_translation(self):
+
+		assert microsoft_translate(u'English', 'en', 'es') == u'Inglés'
+        assert microsoft_translate(u'Español', 'es', 'en') == u'Spanish'
+
+
+
 if __name__ == '__main__':
 
 	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestAvatar)
 	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestNickName)
+	suite3 = unittest.TestLoader().loadTestsFromTestCase(TestTranslate)
+	suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFollow)
 
-	suite = unittest.TestSuite([suite1, suite2])
+	suite = unittest.TestSuite([suite1, suite2, suite3, suite4])
 
 	unittest.TextTestRunner(verbosity = 2).run(suite)
 	
 	# unittest.main()
-"""
+
 
 
 
