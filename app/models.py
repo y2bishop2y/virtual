@@ -2,6 +2,7 @@ from app import db, app
 from hashlib import md5
 
 import flask.ext.whooshalchemy as whooshalchemy
+import re
 
 
 ROLE_USER  = 0
@@ -49,7 +50,7 @@ class User(db.Model):
 		return 'http://www.gravatar.com/avatar/' + md5(self.email).hexdigest() + '?d=mm&s=' + str(size)
 
 
-	def __repr__(self):
+	def __repr__(self): # pragma: no cover
 		return '<User %r>' % (self.nickname)
 
 
@@ -110,7 +111,7 @@ class Post(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	language = db.Column(db.String(5))
 
-	def __repr__(self):
+	def __repr__(self): # pragma: no cover
 		return '<Post %r>' % (self.body)
 
 

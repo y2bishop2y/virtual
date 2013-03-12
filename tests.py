@@ -4,12 +4,15 @@
 import os
 import unittest
 
-
 from config import basedir
 from app import app, db
 from datetime import datetime, timedelta
 from app.models import User, Post
 from app.translate import microsoft_translate
+from coverage import coverage 
+
+# cov = coverage(branch = True, omit = ['flask/*', 'tests.py'], timid = True)
+# cov.start()
 
 class TestAvatar(unittest.TestCase):
 
@@ -194,8 +197,6 @@ class TestTranslate(unittest.TestCase):
 	def setUp(self):
 		db.create_all()
 
-
-
 	def tearDown(self):
 		db.session.remove()
 		db.drop_all()
@@ -235,23 +236,84 @@ class TestDeletePost(unittest.TestCase):
 		db.session.commit()
 
 
+class TestUser(unittest.TestCase):
+	def setUp(self):
+		db.create_all()
+
+	def tearDown(self):
+		db.session.remove()
+		db.drop_all()
+
+
+	def test_user(self):
+		# make valid nicknames 
+		n = User.make_valid_nickname('John_123')
+
+		assert n == 'John_123'
+
+		n = User.make_valid_nickname('John_[123]\n')
+		assert n == 'John_123'
+
+		# create a User
+		u = User(nickname = 'john', email = 'john@example.com')
+		db.session.add(u)
+		db.session.commit()
+
+		assert u.is_authenticated() == True
+		assert u.is_active() == True
+		assert u.is_anonymous() == False
+		assert u.id == int(u.get_id())
+
+
+	def test_make_unique_nickname(self):
+
+		# create a user and write it to the database 
+		u = User(nickname = 'john', email = 'john@example.com')
+
+		db.session.add(u)
+		db.session.commit()
+
+		nickname = User.make_unique_nickname('susan')
+		assert nickname == 'susan'
+
+		nickname = User.make_unique_nickname('john')
+		assert nickname != 'john'
+
 
 
 
 
 if __name__ == '__main__':
 
-	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestAvatar)
-	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestNickName)
-	suite3 = unittest.TestLoader().loadTestsFromTestCase(TestTranslate)
-	suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFollow)
-	suite5 = unittest.TestLoader().loadTestsFromTestCase(TestDeletePost)
 
-	suite = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5])
+	try:
+		suite1 = unittest.TestLoader().loadTestsFromTestCase(TestAvatar)
+		suite2 = unittest.TestLoader().loadTestsFromTestCase(TestNickName)
+		suite3 = unittest.TestLoader().loadTestsFromTestCase(TestTranslate)
+		suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFollow)
+		suite5 = unittest.TestLoader().loadTestsFromTestCase(TestDeletePost)
+		suite6 = unittest.TestLoader().loadTestsFromTestCase(TestUser)
 
-	unittest.TextTestRunner(verbosity = 2).run(suite)
-	
-	# unittest.main()
+		suite = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6])
+		# suite = unittest.TestSuite([suite1])
+		unittest.TextTestRunner(verbosity = 2).run(suite)
+
+		# unittest.main()
+	except:
+		print "HERE ???"
+		pass
+
+
+	# cov.stop()
+	# cov.save()
+
+	# print "\n\nCoverage Report:\n"
+	# cov.report()
+
+	# print "HTML version: " + os.path.join(basedir, "tmp/coverage/index.hml")
+	# cov.html_report(directory = "tmp/coverage")
+	# cov.erase()
+
 
 
 
