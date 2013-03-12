@@ -127,7 +127,6 @@ class TestFollow(unittest.TestCase):
 		assert u1.followers
 
 
-
 	def test_follow_posts(self):
 
 		# make for users
@@ -193,18 +192,50 @@ class TestFollow(unittest.TestCase):
 class TestTranslate(unittest.TestCase):
 
 	def setUp(self):
-		pass
-		
+		db.create_all()
+
 
 
 	def tearDown(self):
-		pass
+		db.session.remove()
+		db.drop_all()
 
 
 	def test_translation(self):
 
 		assert microsoft_translate(u'English', 'en', 'es') == u'Inglés'
         assert microsoft_translate(u'Español', 'es', 'en') == u'Spanish'
+
+
+class TestDeletePost(unittest.TestCase):
+	def setUp(self):
+		db.create_all()
+
+	def tearDown(self):
+		db.session.remove()
+		db.drop_all()
+
+	def test_delete_post(self):
+		# create a user and a post
+		u = User(nickname = 'john', email = 'john@example.com')
+		p = Post(body = 'test post', author = u, timestamp = datetime.utcnow())
+
+		db.session.add(u)
+		db.session.add(p)
+		db.session.commit()
+
+		# Query the post and destroy the session
+		p = Post.query.get(1)
+
+		db.session.remove()
+
+		# Delete the post using a new session
+		db.session = db.create_scoped_session()
+		db.session.delete(p)
+		db.session.commit()
+
+
+
 
 
 
@@ -214,8 +245,9 @@ if __name__ == '__main__':
 	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestNickName)
 	suite3 = unittest.TestLoader().loadTestsFromTestCase(TestTranslate)
 	suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFollow)
+	suite5 = unittest.TestLoader().loadTestsFromTestCase(TestDeletePost)
 
-	suite = unittest.TestSuite([suite1, suite2, suite3, suite4])
+	suite = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5])
 
 	unittest.TextTestRunner(verbosity = 2).run(suite)
 	

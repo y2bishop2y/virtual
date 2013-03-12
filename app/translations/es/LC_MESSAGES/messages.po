@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-09 01:06-0800\n"
-"PO-Revision-Date: 2013-03-09 01:07-0800\n"
+"POT-Creation-Date: 2013-03-11 22:51-0700\n"
+"PO-Revision-Date: 2013-03-11 22:53-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -42,75 +42,108 @@ msgstr "Error: el servicio de traducción no está configurado."
 msgid "Error: Unexpected error."
 msgstr "Error: Un error inesperado ha ocurrido."
 
-#: app/views.py:41
+#: app/views.py:44
 msgid "Your post is now live!"
 msgstr "¡Tu artículo ha sido publicado!"
 
-#: app/views.py:101
+#: app/views.py:104
 msgid "Invalid login. Please try again."
 msgstr "Credenciales inválidas. Por favor intenta de nuevo."
 
-#: app/views.py:141
+#: app/views.py:144
 #, python-format
 msgid "User  %(nickname)s  not found."
 msgstr "El usuario %(nickname)s no existe."
 
-#: app/views.py:164
+#: app/views.py:167
 msgid "Your changes have been saved."
 msgstr "Tus cambios han sido guardados."
 
-#: app/views.py:194
+#: app/views.py:197
 #, python-format
 msgid "User %(nickname)s not found."
 msgstr "El usuario %(nickname)s no existe."
 
-#: app/views.py:198
+#: app/views.py:201
 msgid "You can't follow yourself"
 msgstr "¡No te puedes seguir a tí mismo!"
 
-#: app/views.py:203
+#: app/views.py:206
 #, python-format
 msgid "Cannont follow %(nickname)s ."
 msgstr "No se pudo seguir a %(nickname)s."
 
-#: app/views.py:208
+#: app/views.py:211
 #, python-format
 msgid "You are now following %(nickname)s !"
 msgstr "¡Ya estás siguiendo a %(nickname)s!"
 
-#: app/views.py:220
+#: app/views.py:223
 #, python-format
 msgid "User %(nickname)s not found"
 msgstr "El usuario %(nickname)s no existe."
 
-#: app/views.py:224
+#: app/views.py:227
 msgid "You can't unfollow yourself!"
 msgstr "¡No te puedes dejar de seguir a tí mismo!"
 
-#: app/views.py:230
+#: app/views.py:233
 #, python-format
 msgid "Cannot unfollow %(nickname)s ."
 msgstr "No se pudo dejar de seguir a %(nickname)s."
 
-#: app/views.py:236
+#: app/views.py:239
 #, python-format
 msgid "You have stopped following %(nickname)s ."
 msgstr "Ya no sigues más a %(nickname)s."
 
-#: app/templates/base.html:32
+#: app/views.py:289
+msgid "Post not found"
+msgstr ""
+
+#: app/views.py:295
+msgid "You cannot delete this post."
+msgstr ""
+
+#: app/views.py:301
+#, fuzzy
+msgid "Your post has been delete"
+msgstr "¡Tu artículo ha sido publicado!"
+
+#: app/templates/404.html:4
+msgid "File Not Found"
+msgstr "Archivo no encontrado"
+
+#: app/templates/404.html:6 app/templates/500.html:11
+msgid "Back"
+msgstr "Volver"
+
+#: app/templates/500.html:7
+msgid "An unexpected error has occurred"
+msgstr "Un error inesperado ha ocurrido"
+
+#: app/templates/500.html:9
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "El administrador ha sido notificado. ¡Lo lamento!"
+
+#: app/templates/base.html:35
+msgid "Error: Could not contact server."
+msgstr "Error: No es posible contactar al servidor."
+
+#: app/templates/base.html:54
 msgid "Home"
 msgstr "Inicio"
 
-#: app/templates/base.html:34
+#: app/templates/base.html:56
 #, fuzzy
 msgid "Your Profile"
 msgstr "Editar Tu Perfil"
 
-#: app/templates/base.html:35
+#: app/templates/base.html:57
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: app/templates/base.html:45
+#: app/templates/base.html:67
 msgid "Search"
 msgstr "Buscar"
 
@@ -198,6 +231,10 @@ msgstr "%(nickname)s dijo %(when)s:"
 #: app/templates/post.html:30
 msgid "Translate"
 msgstr "Traducir"
+
+#: app/templates/post.html:38
+msgid "Delete"
+msgstr "Borrar"
 
 #: app/templates/search_results.html:5
 msgid "Search results for \"%(query):"
